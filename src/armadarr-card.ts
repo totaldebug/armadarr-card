@@ -119,6 +119,7 @@ export class ArmadarrCard extends LitElement implements LovelaceCard {
     
     const mediaItems = data.slice(1, maxLimit + 1);
     const isCollapsible = mediaItems.length > collapseLimit;
+
     const itemsToShow = (isCollapsible && this._collapsed) 
       ? mediaItems.slice(0, collapseLimit) 
       : mediaItems;
@@ -317,6 +318,7 @@ export class ArmadarrCard extends LitElement implements LovelaceCard {
 
   private _toggleCollapse(): void {
     this._collapsed = !this._collapsed;
+    this.requestUpdate();
   }
 
   private async _requestItem(e: Event, entryId: string, itemId: number): Promise<void> {
