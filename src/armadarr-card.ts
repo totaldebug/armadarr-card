@@ -295,7 +295,22 @@ export class ArmadarrCard extends LitElement implements LovelaceCard {
 
   private _handleItemClick(item: ArmadarrMediaItem): void {
     if (this.config.url_pattern) {
-      const url = this.config.url_pattern.replace('{title}', encodeURIComponent(item.title));
+      let url = this.config.url_pattern;
+      const replacements: Record<string, string | undefined> = {
+        '{title}': item.title,
+        '{id}': item.id?.toString(),
+        '{airdate}': item.airdate,
+        '{number}': item.number,
+        '{episode}': item.episode,
+        '{studio}': item.studio,
+        '{genres}': item.genres,
+      };
+
+      for (const [placeholder, value] of Object.entries(replacements)) {
+        if (value) {
+          url = url.split(placeholder).join(encodeURIComponent(value));
+        }
+      }
       window.open(url, '_blank');
     }
   }

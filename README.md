@@ -2,6 +2,9 @@
 
 A custom Home Assistant Lovelace card to display upcoming and wanted media from the Armadarr integration. Inspired by the `upcoming-media-card`, this card provides a modern, interactive interface for your media management.
 
+> [!TIP]
+> This card is designed to work best with the [Armadarr integration](https://github.com/totaldebug/armadarr). It is the most feature-complete and reliable way to get your media data into Home Assistant for use with this card.
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 ![Version](https://img.shields.io/github/v/release/totaldebug/armadarr-card?style=for-the-badge)
 ![License](https://img.shields.io/github/license/totaldebug/armadarr-card?style=for-the-badge)
@@ -21,9 +24,10 @@ A custom Home Assistant Lovelace card to display upcoming and wanted media from 
 
 ## Screenshots
 
-| Poster View | Fanart View |
-| :---: | :---: |
-| ![Poster View Placeholder](https://raw.githubusercontent.com/totaldebug/armadarr-card/main/screenshots/poster_view.png) | ![Fanart View Placeholder](https://raw.githubusercontent.com/totaldebug/armadarr-card/main/screenshots/fanart_view.png) |
+| Poster View | Fanart View | Wanted View |
+| :---: | :---: | :---: |
+| ![Poster View Placeholder](https://raw.githubusercontent.com/totaldebug/armadarr-card/main/screenshots/poster_view.png) | ![Fanart View Placeholder](https://raw.githubusercontent.com/totaldebug/armadarr-card/main/screenshots/fanart_view.png) | ![Wanted View Placeholder](https://raw.githubusercontent.com/totaldebug/armadarr-card/main/screenshots/wanted_view.png) |
+
 
 *Note: Screenshots are illustrative. Actual appearance depends on your Home Assistant theme.*
 
@@ -59,7 +63,23 @@ A custom Home Assistant Lovelace card to display upcoming and wanted media from 
 | `image_style` | string | `poster` | Image style to display: `poster` or `fanart`. |
 | `max` | number | `5` | Maximum number of items to show in total (up to 50). |
 | `collapse` | number | `5` | Number of items to show before showing the expand/collapse toggle. |
-| `url_pattern` | string | Optional | URL pattern for clicking items. Use `{title}` as a placeholder for the media title. |
+| `url_pattern` | string | Optional | URL pattern for clicking items. See [URL Pattern Placeholders](#url-pattern-placeholders) for available arguments. |
+
+## URL Pattern Placeholders
+
+When using the `url_pattern` option, you can use the following placeholders which will be automatically replaced with the corresponding media information:
+
+| Placeholder | Description | Example Value |
+| :--- | :--- | :--- |
+| `{title}` | The title of the media item. | `The Mandalorian` |
+| `{id}` | The unique ID of the item from the source application. | `12345` |
+| `{airdate}` | The date the item airs/aired. | `2023-10-27` |
+| `{number}` | The season and episode number (if applicable). | `S03E01` |
+| `{episode}` | The title of the episode (if applicable). | `Chapter 17: The Apostate` |
+| `{studio}` | The studio or network. | `Disney+` |
+| `{genres}` | A comma-separated list of genres. | `Action, Adventure, Sci-Fi` |
+
+Example: `url_pattern: "https://www.thetvdb.com/search?query={title}"`
 
 ## Example Usage
 
