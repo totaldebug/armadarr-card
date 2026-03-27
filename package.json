@@ -1,6 +1,6 @@
 {
   "name": "armadarr-card",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Armadarr Media Card for Home Assistant",
   "type": "module",
   "main": "dist/armadarr-card.js",
