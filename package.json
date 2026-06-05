@@ -28,7 +28,7 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
-    "@typescript-eslint/parser": "^8.57.2",
+    "@typescript-eslint/parser": "^8.60.1",
     "custom-card-helpers": "^2.0.0",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
